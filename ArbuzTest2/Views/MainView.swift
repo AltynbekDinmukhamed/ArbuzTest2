@@ -5,6 +5,7 @@
 //  Created by Димаш Алтынбек on 19.05.2024.
 //
 
+
 import SwiftUI
 
 struct MainView: View {
@@ -31,3 +32,4 @@ struct MainView_Previews: PreviewProvider {
         MainView()
     }
 }
+
