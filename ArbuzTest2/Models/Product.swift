@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct Product: Identifiable {
+    var id = UUID()
+    var name: String
+    var imageName: String
+    var price: Double
+}
+
+let sampleProduct = Product(name: "Яблоки", imageName: "apple", price: 500)
+let sampleProducts = [
+    Product(name: "Яблоки", imageName: "apple", price: 500),
+    Product(name: "Бананы", imageName: "banana", price: 300),
+]
