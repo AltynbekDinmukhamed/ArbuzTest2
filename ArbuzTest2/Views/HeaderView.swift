@@ -1,5 +1,5 @@
 //
-//  ProductCardView.swift
+//  ContentView.swift
 //  ArbuzTest2
 //
 //  Created by Димаш Алтынбек on 19.05.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductCardView: View {
+struct HeaderView: View {
     var product: Product
 
     var body: some View {
@@ -15,6 +15,7 @@ struct ProductCardView: View {
             Image(product.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
             Text(product.name)
                 .font(.headline)
                 .padding(.top, 8)
@@ -32,12 +33,12 @@ struct ProductCardView: View {
         .background(Color.white)
         .cornerRadius(10)
         .shadow(radius: 5)
-        .padding()
+        .padding(.horizontal)
     }
 }
 
-struct ProductCardView_Previews: PreviewProvider {
+struct HeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCardView(product: sampleProduct)
+        HeaderView(product: sampleProduct)
     }
 }
