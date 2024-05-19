@@ -5,6 +5,9 @@
 //  Created by Димаш Алтынбек on 19.05.2024.
 //
 
+
+
+
 import Foundation
 
 struct Product: Identifiable {
@@ -18,4 +21,6 @@ let sampleProduct = Product(name: "Яблоки", imageName: "apple", price: 500
 let sampleProducts = [
     Product(name: "Яблоки", imageName: "apple", price: 500),
     Product(name: "Бананы", imageName: "banana", price: 300),
+    // Добавьте больше продуктов по необходимости
 ]
+
