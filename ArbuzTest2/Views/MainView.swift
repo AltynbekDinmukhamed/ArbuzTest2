@@ -11,18 +11,8 @@ struct MainView: View {
     @State private var headerHeight: CGFloat = 200
     @State private var currentHeaderIndex = 0
 
-    @State private var headers = [
-        Product(name: "BBQ или гриль?", imageName: "steak", price: 2099.00),
-        Product(name: "Бургер", imageName: "burger", price: 1500.00),
-        Product(name: "Пицца", imageName: "pizza", price: 1200.00)
-    ]
-
-    @State private var products = [
-        Product(name: "Яблоки", imageName: "apple", price: 500.00),
-        Product(name: "Бананы", imageName: "banana", price: 300.00),
-        Product(name: "Виноград", imageName: "grape", price: 800.00),
-        Product(name: "Апельсины", imageName: "orange", price: 600.00)
-    ]
+    @State private var headers: [Product] = []
+    @State private var products: [Product] = []
     
     @ObservedObject var cartManager: CartManager
 
@@ -38,8 +28,11 @@ struct MainView: View {
                         .clipped()
                         .padding()
                         .onAppear {
-                            Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
-                                currentHeaderIndex = (currentHeaderIndex + 1) % headers.count
+                            loadProducts()
+                            if !headers.isEmpty {
+                                Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { timer in
+                                    currentHeaderIndex = (currentHeaderIndex + 1) % headers.count
+                                }
                             }
                         }
 
@@ -50,6 +43,24 @@ struct MainView: View {
             }
             .navigationTitle("")
             .navigationBarHidden(true)
+        }
+    }
+
+    private func loadProducts() {
+        if let savedProducts = UserDefaults.standard.data(forKey: "products"),
+           let decodedProducts = try? JSONDecoder().decode([Product].self, from: savedProducts) {
+            self.headers = decodedProducts
+            self.products = decodedProducts
+        } else {
+            self.headers = sampleProducts
+            self.products = sampleProducts
+            saveSampleProducts()
+        }
+    }
+
+    private func saveSampleProducts() {
+        if let encoded = try? JSONEncoder().encode(sampleProducts) {
+            UserDefaults.standard.set(encoded, forKey: "products")
         }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HeaderView: View {
     @Binding var product: Product
+    @ObservedObject var cartManager: CartManager
 
     var body: some View {
         VStack {
@@ -38,6 +39,7 @@ struct HeaderView: View {
                 if product.quantity == 0 {
                     Button(action: {
                         product.quantity += 1
+                        cartManager.addToCart(product: product)
                     }) {
                         Text("Добавить в корзину")
                             .frame(maxWidth: .infinity)
@@ -51,6 +53,7 @@ struct HeaderView: View {
                         Button(action: {
                             if product.quantity > 0 {
                                 product.quantity -= 1
+                                cartManager.updateCart(product: product)
                             }
                         }) {
                             Text("-")
@@ -67,6 +70,7 @@ struct HeaderView: View {
 
                         Button(action: {
                             product.quantity += 1
+                            cartManager.updateCart(product: product)
                         }) {
                             Text("+")
                                 .font(.title)
@@ -95,7 +99,8 @@ struct HeaderView: View {
 
 struct HeaderView_Previews: PreviewProvider {
     @State static var product = sampleProduct
+    @StateObject static var cartManager = CartManager()
     static var previews: some View {
-        HeaderView(product: $product)
+        HeaderView(product: $product, cartManager: cartManager)
     }
 }

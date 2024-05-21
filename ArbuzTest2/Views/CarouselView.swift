@@ -14,7 +14,7 @@ struct CarouselView: View {
     var body: some View {
         TabView(selection: $currentIndex) {
             ForEach(headers.indices, id: \.self) { index in
-                HeaderView(product: $headers[index])
+                HeaderView(product: $headers[index], cartManager: CartManager())
                     .tag(index)
             }
         }

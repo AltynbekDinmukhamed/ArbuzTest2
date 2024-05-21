@@ -45,9 +45,12 @@ struct ProductDetailView: View {
     }
 
     private func loadProduct() {
-        let repository = ProductRepository()
-        repository.fetchProduct(by: productId) { product in
+        if let savedProducts = UserDefaults.standard.data(forKey: "products"),
+           let decodedProducts = try? JSONDecoder().decode([Product].self, from: savedProducts),
+           let product = decodedProducts.first(where: { $0.id == productId }) {
             self.product = product
+            self.isLoading = false
+        } else {
             self.isLoading = false
         }
     }

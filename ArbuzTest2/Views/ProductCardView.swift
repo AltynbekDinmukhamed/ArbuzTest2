@@ -53,7 +53,7 @@ struct ProductCardView: View {
                         Button(action: {
                             if product.quantity > 0 {
                                 product.quantity -= 1
-                                cartManager.removeFromCart(product: product)
+                                cartManager.updateCart(product: product)
                             }
                         }) {
                             Text("-")
@@ -63,14 +63,14 @@ struct ProductCardView: View {
                                 .cornerRadius(15)
                         }
                         .buttonStyle(BorderlessButtonStyle())
-                        
+
                         Text("\(product.quantity)")
                             .font(.headline)
                             .frame(width: 40)
 
                         Button(action: {
                             product.quantity += 1
-                            cartManager.addToCart(product: product)
+                            cartManager.updateCart(product: product)
                         }) {
                             Text("+")
                                 .font(.title)
