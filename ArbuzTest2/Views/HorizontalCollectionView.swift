@@ -14,8 +14,11 @@ struct HorizontalCollectionView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach($products) { $product in
-                    ProductCardView(product: $product, cartManager: cartManager)
-                        .frame(width: 250)
+                    NavigationLink(destination: ProductDetailView(productId: product.id)
+                                    .environmentObject(cartManager)) {
+                        ProductCardView(product: $product, cartManager: cartManager)
+                            .frame(width: 250)
+                    }
                 }
             }
             .padding()

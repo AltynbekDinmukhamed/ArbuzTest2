@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Identifiable, Equatable {
+struct Product: Identifiable {
     var id = UUID()
     var name: String
     var imageName: String
@@ -20,4 +20,17 @@ let sampleProduct = Product(name: "Яблоки", imageName: "apple", price: 500
 let sampleProducts = [
     Product(name: "Яблоки", imageName: "apple", price: 500),
     Product(name: "Бананы", imageName: "banana", price: 300),
+    Product(name: "Виноград", imageName: "grape", price: 800),
+    Product(name: "Апельсины", imageName: "orange", price: 600)
 ]
+
+class ProductRepository {
+    func fetchProduct(by id: UUID, completion: @escaping (Product?) -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            let product = sampleProducts.first { $0.id == id }
+            DispatchQueue.main.async {
+                completion(product)
+            }
+        }
+    }
+}
