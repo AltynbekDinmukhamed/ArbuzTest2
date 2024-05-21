@@ -16,6 +16,7 @@ struct Product: Identifiable {
     var imageName: String
     var price: Double
     var quantity: Int = 0
+    var isLiked: Bool = false
 }
 
 let sampleProduct = Product(name: "Яблоки", imageName: "apple", price: 500)
