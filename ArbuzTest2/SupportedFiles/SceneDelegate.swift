@@ -17,9 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        let mainView = UIHostingController(rootView: MainView())
-        let cartView = UIHostingController(rootView: CartView())
-
+        let cartManager = CartManager()
+        let mainView = UIHostingController(rootView: MainView(cartManager: cartManager))
+        let cartView = UIHostingController(rootView: CartView(cartManager: cartManager))
+        
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [mainView, cartView]
         
