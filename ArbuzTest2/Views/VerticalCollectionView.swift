@@ -14,8 +14,11 @@ struct VerticalCollectionView: View {
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem()]) {
             ForEach($products) { $product in
-                ProductCardView(product: $product, cartManager: cartManager)
-                    .frame(width: 220)
+                NavigationLink(destination: ProductDetailView(productId: product.id)
+                                .environmentObject(cartManager)) {
+                    ProductCardView(product: $product, cartManager: cartManager)
+                        .frame(width: 220)
+                }
             }
         }
         .padding(5)
