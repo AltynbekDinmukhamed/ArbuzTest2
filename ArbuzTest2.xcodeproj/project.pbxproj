@@ -23,6 +23,7 @@
 		5656EE2E2BFA340000C48EF0 /* VerticalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE2D2BFA340000C48EF0 /* VerticalCollectionView.swift */; };
 		5656EE322BFA55B900C48EF0 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE312BFA55B900C48EF0 /* CarouselView.swift */; };
 		5656EE352BFC5FE000C48EF0 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE342BFC5FE000C48EF0 /* CartManager.swift */; };
+		5656EE372BFCFEB700C48EF0 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE362BFCFEB700C48EF0 /* ProductRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5656EE2D2BFA340000C48EF0 /* VerticalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionView.swift; sourceTree = "<group>"; };
 		5656EE312BFA55B900C48EF0 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		5656EE342BFC5FE000C48EF0 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		5656EE362BFCFEB700C48EF0 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5656EE292BFA2F9500C48EF0 /* ProductViewModel.swift */,
+				5656EE362BFCFEB700C48EF0 /* ProductRepository.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				5656EE1D2BFA2F4900C48EF0 /* HeaderView.swift in Sources */,
 				5656EE2E2BFA340000C48EF0 /* VerticalCollectionView.swift in Sources */,
 				5656EE232BFA2F6200C48EF0 /* ProductDetailView.swift in Sources */,
+				5656EE372BFCFEB700C48EF0 /* ProductRepository.swift in Sources */,
 				5656EE322BFA55B900C48EF0 /* CarouselView.swift in Sources */,
 				5656EE252BFA2F6D00C48EF0 /* ProductCardView.swift in Sources */,
 			);
