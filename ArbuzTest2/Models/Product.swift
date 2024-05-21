@@ -5,12 +5,9 @@
 //  Created by Димаш Алтынбек on 19.05.2024.
 //
 
-
-
-
 import Foundation
 
-struct Product: Identifiable {
+struct Product: Identifiable, Equatable {
     var id = UUID()
     var name: String
     var imageName: String

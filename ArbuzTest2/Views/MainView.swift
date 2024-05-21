@@ -23,9 +23,11 @@ struct MainView: View {
         Product(name: "Виноград", imageName: "grape", price: 800.00),
         Product(name: "Апельсины", imageName: "orange", price: 600.00)
     ]
+    
+    @ObservedObject var cartManager: CartManager
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(spacing: 0) {
                     CarouselView(headers: $headers, currentIndex: $currentHeaderIndex)
@@ -41,8 +43,8 @@ struct MainView: View {
                             }
                         }
 
-                    HorizontalCollectionView(products: $products)
-                    VerticalCollectionView(products: $products)
+                    HorizontalCollectionView(products: $products, cartManager: cartManager)
+                    VerticalCollectionView(products: $products, cartManager: cartManager)
                 }
                 .background(Color.white)
             }
@@ -53,7 +55,8 @@ struct MainView: View {
 }
 
 struct MainView_Previews: PreviewProvider {
+    @StateObject static var cartManager = CartManager()
     static var previews: some View {
-        MainView()
+        MainView(cartManager: cartManager)
     }
 }

@@ -8,12 +8,13 @@ import SwiftUI
 
 struct HorizontalCollectionView: View {
     @Binding var products: [Product]
+    @ObservedObject var cartManager: CartManager
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach($products) { $product in
-                    ProductCardView(product: $product)
+                    ProductCardView(product: $product, cartManager: cartManager)
                         .frame(width: 250)
                 }
             }
@@ -24,6 +25,6 @@ struct HorizontalCollectionView: View {
 
 struct HorizontalCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCollectionView(products: .constant(sampleProducts))
+        HorizontalCollectionView(products: .constant(sampleProducts), cartManager: CartManager())
     }
 }

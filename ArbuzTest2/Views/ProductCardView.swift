@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductCardView: View {
     @Binding var product: Product
+    @ObservedObject var cartManager: CartManager
 
     var body: some View {
         VStack {
@@ -37,6 +38,7 @@ struct ProductCardView: View {
                 if product.quantity == 0 {
                     Button(action: {
                         product.quantity += 1
+                        cartManager.addToCart(product: product)
                     }) {
                         Text("Добавить в корзину")
                             .frame(maxWidth: .infinity, maxHeight: 50)
@@ -51,6 +53,7 @@ struct ProductCardView: View {
                         Button(action: {
                             if product.quantity > 0 {
                                 product.quantity -= 1
+                                cartManager.removeFromCart(product: product)
                             }
                         }) {
                             Text("-")
@@ -67,6 +70,7 @@ struct ProductCardView: View {
 
                         Button(action: {
                             product.quantity += 1
+                            cartManager.addToCart(product: product)
                         }) {
                             Text("+")
                                 .font(.title)
@@ -95,7 +99,8 @@ struct ProductCardView: View {
 
 struct ProductCardView_Previews: PreviewProvider {
     @State static var product = sampleProduct
+    @StateObject static var cartManager = CartManager()
     static var previews: some View {
-        ProductCardView(product: $product)
+        ProductCardView(product: $product, cartManager: cartManager)
     }
 }

@@ -22,6 +22,7 @@
 		5656EE2C2BFA33EC00C48EF0 /* HorizontalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE2B2BFA33EC00C48EF0 /* HorizontalCollectionView.swift */; };
 		5656EE2E2BFA340000C48EF0 /* VerticalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE2D2BFA340000C48EF0 /* VerticalCollectionView.swift */; };
 		5656EE322BFA55B900C48EF0 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE312BFA55B900C48EF0 /* CarouselView.swift */; };
+		5656EE352BFC5FE000C48EF0 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656EE342BFC5FE000C48EF0 /* CartManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		5656EE2B2BFA33EC00C48EF0 /* HorizontalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionView.swift; sourceTree = "<group>"; };
 		5656EE2D2BFA340000C48EF0 /* VerticalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionView.swift; sourceTree = "<group>"; };
 		5656EE312BFA55B900C48EF0 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		5656EE342BFC5FE000C48EF0 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		5656EE032BFA2DA900C48EF0 /* ArbuzTest2 */ = {
 			isa = PBXGroup;
 			children = (
+				5656EE332BFC5FD300C48EF0 /* Managers */,
 				5656EE1B2BFA2F3000C48EF0 /* Models */,
 				5656EE192BFA2F0000C48EF0 /* Views */,
 				5656EE282BFA2F8300C48EF0 /* ViewModels */,
@@ -132,6 +135,14 @@
 				5656EE292BFA2F9500C48EF0 /* ProductViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5656EE332BFC5FD300C48EF0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5656EE342BFC5FE000C48EF0 /* CartManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5656EE212BFA2F5A00C48EF0 /* CartView.swift in Sources */,
+				5656EE352BFC5FE000C48EF0 /* CartManager.swift in Sources */,
 				5656EE272BFA2F7700C48EF0 /* Product.swift in Sources */,
 				5656EE052BFA2DA900C48EF0 /* AppDelegate.swift in Sources */,
 				5656EE1F2BFA2F5200C48EF0 /* MainView.swift in Sources */,
