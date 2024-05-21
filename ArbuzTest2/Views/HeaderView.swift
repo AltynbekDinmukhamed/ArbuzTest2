@@ -12,10 +12,21 @@ struct HeaderView: View {
 
     var body: some View {
         VStack {
-            Image(product.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity)
+            ZStack(alignment: .topTrailing) {
+                Image(product.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: .infinity)
+                Button(action: {
+                    product.isLiked.toggle()
+                }) {
+                    Image(systemName: product.isLiked ? "heart.fill" : "heart")
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(product.isLiked ? .red : .gray)
+                        .padding()
+                }
+            }
             Text(product.name)
                 .font(.headline)
                 .padding(.top, 8)
@@ -72,7 +83,7 @@ struct HeaderView: View {
                     .shadow(radius: 5)
                 }
             }
-            .frame(height: 50)  // Задаем фиксированную высоту
+            .frame(height: 50)
             .padding()
         }
         .background(Color.white)
