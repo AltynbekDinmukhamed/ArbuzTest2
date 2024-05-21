@@ -45,12 +45,8 @@ struct ProductDetailView: View {
     }
 
     private func loadProduct() {
-        if let savedProducts = UserDefaults.standard.data(forKey: "products"),
-           let decodedProducts = try? JSONDecoder().decode([Product].self, from: savedProducts),
-           let product = decodedProducts.first(where: { $0.id == productId }) {
+        ProductRepository.fetchProduct(by: productId) { product in
             self.product = product
-            self.isLoading = false
-        } else {
             self.isLoading = false
         }
     }
@@ -135,3 +131,4 @@ struct ProductDetailView_Previews: PreviewProvider {
             .environmentObject(CartManager())
     }
 }
+

@@ -10,7 +10,7 @@ import SwiftUI
 struct CartView: View {
     @ObservedObject var cartManager: CartManager
     @State private var isCheckingOut = false
-    @State private var showingCheckoutScreen = false
+    @State private var showLoadingScreen = false
 
     var body: some View {
         NavigationStack {
@@ -76,20 +76,11 @@ struct CartView: View {
                     .font(.headline)
                     .padding()
 
-                NavigationLink(value: "checkout") {
-                    EmptyView()
-                }
-                .navigationDestination(for: String.self) { value in
-                    if value == "checkout" {
-                        CheckoutView()
-                    }
-                }
-
                 Button(action: {
-                    isCheckingOut = true
+                    showLoadingScreen = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        isCheckingOut = false
-                        showingCheckoutScreen = true
+                        showLoadingScreen = false
+                        isCheckingOut = true
                     }
                 }) {
                     Text("Перейти к чекауту")
@@ -101,11 +92,14 @@ struct CartView: View {
                 }
                 .padding()
                 .disabled(cartManager.totalCost == 0)
+                .navigationDestination(isPresented: $isCheckingOut) {
+                    CheckoutView()
+                }
             }
             .navigationTitle("Корзина")
             .overlay(
                 Group {
-                    if isCheckingOut {
+                    if showLoadingScreen {
                         Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
                         ProgressView("Проверка актуальности корзины...")
                             .padding()
@@ -120,7 +114,7 @@ struct CartView: View {
 
 struct CheckoutView: View {
     var body: some View {
-        Text("Hello World!")
+        Text("Чекаут")
             .font(.largeTitle)
             .padding()
     }
