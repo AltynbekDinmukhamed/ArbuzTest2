@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct CarouselView: View {
-    let headers: [Product]
+    @Binding var headers: [Product]
     @Binding var currentIndex: Int
 
     var body: some View {
         TabView(selection: $currentIndex) {
             ForEach(headers.indices, id: \.self) { index in
-                HeaderView(product: headers[index])
+                HeaderView(product: $headers[index])
                     .tag(index)
             }
         }
@@ -25,7 +25,6 @@ struct CarouselView: View {
 
 struct CarouselView_Previews: PreviewProvider {
     static var previews: some View {
-        CarouselView(headers: sampleProducts, currentIndex: .constant(0))
+        CarouselView(headers: .constant(sampleProducts), currentIndex: .constant(0))
     }
 }
-

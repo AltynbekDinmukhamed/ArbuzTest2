@@ -15,12 +15,11 @@ struct Product: Identifiable {
     var name: String
     var imageName: String
     var price: Double
+    var quantity: Int = 0
 }
 
 let sampleProduct = Product(name: "Яблоки", imageName: "apple", price: 500)
 let sampleProducts = [
     Product(name: "Яблоки", imageName: "apple", price: 500),
     Product(name: "Бананы", imageName: "banana", price: 300),
-    // Добавьте больше продуктов по необходимости
 ]
-

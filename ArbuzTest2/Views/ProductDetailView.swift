@@ -18,7 +18,7 @@ struct ProductDetailView: View {
                     .aspectRatio(contentMode: .fit)
                 Text(product.name)
                     .font(.headline)
-                Text("\(product.price) тг")
+                Text("\(product.price, specifier: "%.2f") тг")
                     .font(.subheadline)
                 Button(action: {
                     // Handle add to cart action
