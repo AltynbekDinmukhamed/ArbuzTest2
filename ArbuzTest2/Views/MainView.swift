@@ -5,24 +5,30 @@
 //  Created by Димаш Алтынбек on 19.05.2024.
 //
 
-
 import SwiftUI
 
 struct MainView: View {
     @State private var headerHeight: CGFloat = 200
     @State private var currentHeaderIndex = 0
 
-    let headers = [
-        Product(name: "BBQ или гриль?", imageName: "steak", price: 2099),
-        Product(name: "Бургер", imageName: "burger", price: 1500),
-        Product(name: "Пицца", imageName: "pizza", price: 1200)
+    @State private var headers = [
+        Product(name: "BBQ или гриль?", imageName: "steak", price: 2099.00),
+        Product(name: "Бургер", imageName: "burger", price: 1500.00),
+        Product(name: "Пицца", imageName: "pizza", price: 1200.00)
+    ]
+
+    @State private var products = [
+        Product(name: "Яблоки", imageName: "apple", price: 500.00),
+        Product(name: "Бананы", imageName: "banana", price: 300.00),
+        Product(name: "Виноград", imageName: "grape", price: 800.00),
+        Product(name: "Апельсины", imageName: "orange", price: 600.00)
     ]
 
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
-                    CarouselView(headers: headers, currentIndex: $currentHeaderIndex)
+                    CarouselView(headers: $headers, currentIndex: $currentHeaderIndex)
                         .frame(height: self.headerHeight)
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
@@ -35,12 +41,13 @@ struct MainView: View {
                             }
                         }
 
-                    HorizontalCollectionView()
-                    VerticalCollectionView()
+                    HorizontalCollectionView(products: $products)
+                    VerticalCollectionView(products: $products)
                 }
                 .background(Color.white)
             }
-            .navigationTitle("Home")
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
     }
 }

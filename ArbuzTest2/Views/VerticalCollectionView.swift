@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct VerticalCollectionView: View {
+    @Binding var products: [Product]
+
     var body: some View {
         LazyVGrid(columns: [GridItem(), GridItem()]) {
-            ForEach(sampleProducts) { product in
-                ProductCardView(product: product)
+            ForEach($products) { $product in
+                ProductCardView(product: $product)
+                    .frame(width: 220)
             }
         }
-        .padding()
     }
 }
 
 struct VerticalCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalCollectionView()
+        VerticalCollectionView(products: .constant(sampleProducts))
     }
 }
